@@ -32,12 +32,18 @@ jobs:
       - name: Run unit tests with nose
         run: nosetests -v --with-spec --spec-color --with-coverage --cover-package=service
 
+      - name: Generate coverage reports
+        if: always()
+        run: |
+          coverage xml
+          coverage html
+
       - name: Upload coverage report
         if: always()
         uses: actions/upload-artifact@v7
         with:
           name: coverage-report
           path: |
-            .coverage
             coverage.xml
+            htmlcov/
           if-no-files-found: ignore
