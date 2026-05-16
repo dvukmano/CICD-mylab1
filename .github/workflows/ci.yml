@@ -30,7 +30,7 @@ jobs:
           flake8 service --count --max-complexity=10 --max-line-length=127 --statistics --ignore=F401,E402
 
       - name: Run unit tests with nose
-        run: nosetests -v --with-spec --spec-color --with-coverage --cover-package=app
+        run: nosetests -v --with-spec --spec-color --with-coverage --cover-package=service
 
       - name: Upload coverage report
         if: always()
